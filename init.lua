@@ -1,4 +1,5 @@
 require "options"
+-- require "after.harpoon"
 -- require "plugins.autopair"
 
 --[[
@@ -77,7 +78,10 @@ require('lazy').setup({
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
+
+  'ThePrimeagen/harpoon',
   -- NOTE: This is where your plugins related to LSP can be installed.
+  --
   --  The configuration is done below. Search for lspconfig to find it below.
   {
     -- LSP Configuration & Plugins
@@ -116,11 +120,11 @@ require('lazy').setup({
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim', opts = {} },
 
-{
+  {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
     opts = {} -- this is equalent to setup({}) function
-},
+  },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -195,7 +199,6 @@ require('lazy').setup({
       end,
     },
   },
-
   {
    -- Theme inspired by Atom
     'navarasu/onedark.nvim',
@@ -281,7 +284,23 @@ require('lazy').setup({
   -- { import = 'custom.plugins' },
 }, {})
 
+
+
+-- I am adding harpoon here because I dont know how to import a file 
+
+local mark = require("harpoon.mark")
+local ui = require("harpoon.ui")
+
+vim.keymap.set("n", "<leader>a", mark.add_file)
+vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu)
+
+vim.keymap.set("n", "<C-h>", function () ui.nav_file(1) end)
+vim.keymap.set("n", "<C-t>", function () ui.nav_file(2) end)
+vim.keymap.set("n", "<C-n>", function () ui.nav_file(3) end)
+vim.keymap.set("n", "<C-s>", function () ui.nav_file(4) end)
+
 -- [[ Setting options ]]
+--
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
 

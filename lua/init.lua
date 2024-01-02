@@ -1,2 +1,3 @@
-require "plugins/"
+require "plugin"
+require "plugins.lazy"
 

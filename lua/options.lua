@@ -11,3 +11,13 @@ vim.wo.number = true
 
 -- no wrap
 vim.opt.wrap = false
+
+-- not letting me use mouse!!
+vim.o.mouse = ''
+
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
+
+vim.opt.smartindent = true
